@@ -109,6 +109,14 @@
               <strong>Curiosity Coach Demo</strong>
               <span>Scripted inquiry</span>
             </div>
+            <div class="demo-coaching-card" id="demo-coaching-card" aria-live="polite">
+              <div>
+                <span class="coaching-label">Current thinking move</span>
+                <strong id="thinking-move">Observe</strong>
+              </div>
+              <p id="thinking-goal">Start with specific details you can see before making an explanation.</p>
+              <div class="sentence-starters" id="sentence-starters" aria-label="Sentence starters"></div>
+            </div>
             <div class="chat-window" id="chat-window"></div>
             <form class="chat-form" id="chat-form">
               <label class="sr-only" for="student-input">Type your response</label>
@@ -116,6 +124,7 @@
               <button type="submit">Send</button>
             </form>
             <div class="demo-controls">
+              <button id="hint-demo" type="button">Hint</button>
               <button id="back-step" type="button">Back</button>
               <button id="reset-demo" type="button">Reset</button>
             </div>
