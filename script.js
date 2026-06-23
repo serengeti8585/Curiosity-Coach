@@ -46,8 +46,8 @@ const demoSteps = [
     hint: 'Use variation, survival advantage, and reproduction.'
   },
   {
-    image: 'Image 3: Iguana swimming underwater',
-    imageSrc: 'assets/images/underwater-iguana.PNG',
+    image: 'Image 4: Iguana sneezing salt',
+    imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
     coach: 'Final challenge: connect this scenario to natural selection in your own words.',
     hint: 'Explain how the environment can favor certain inherited traits.'
   }
