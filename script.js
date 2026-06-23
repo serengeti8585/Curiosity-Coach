@@ -17,31 +17,37 @@ navLinks.addEventListener('click', event => {
 const demoSteps = [
   {
     image: 'Image 1: Galápagos shoreline',
+    imageSrc: 'assets/images/galapagos-shoreline.jpg',
     coach: 'Imagine you are Darwin\'s assistant standing on a rocky Galápagos shoreline. What do you notice first?',
     hint: 'Try observing before explaining.'
   },
   {
     image: 'Image 1: Galápagos shoreline',
+    imageSrc: 'assets/images/galapagos-shoreline.jpg',
     coach: 'Good. Now look again: what seems limited or missing on land that could matter for animals living here?',
     hint: 'Think about food, shelter, and survival needs.'
   },
   {
     image: 'Image 2: Iguana eating algae',
+    imageSrc: 'assets/images/iguana-algae.jpg',
     coach: 'Now you see iguanas near the shore. Some are eating algae. Why might algae matter in this environment?',
     hint: 'Connect limited land vegetation to another food source.'
   },
   {
     image: 'Image 2: Iguana eating algae',
+    imageSrc: 'assets/images/iguana-algae.jpg',
     coach: 'Make an inference: if algae is a major food source, what traits might help some iguanas survive better than others?',
     hint: 'Traits can involve behavior, body structure, or tolerance to salt and water.'
   },
   {
     image: 'Image 3: Iguana swimming underwater',
+    imageSrc: 'assets/images/iguana-underwater.jpg',
     coach: 'Now observe an iguana swimming underwater to feed. Explain how swimming and feeding underwater could become an adaptation over many generations.',
     hint: 'Use variation, survival advantage, and reproduction.'
   },
   {
     image: 'Image 3: Iguana swimming underwater',
+    imageSrc: 'assets/images/iguana-underwater.jpg',
     coach: 'Final challenge: connect this scenario to natural selection in your own words.',
     hint: 'Explain how the environment can favor certain inherited traits.'
   }
@@ -50,6 +56,7 @@ const demoSteps = [
 const chatWindow = document.querySelector('#chat-window');
 const chatForm = document.querySelector('#chat-form');
 const studentInput = document.querySelector('#student-input');
+const demoImage = document.querySelector('#demo-image');
 const imageLabel = document.querySelector('#image-label');
 const dots = Array.from(document.querySelectorAll('.dot'));
 const resetButton = document.querySelector('#reset-demo');
@@ -67,7 +74,24 @@ function addMessage(text, type = 'coach') {
 }
 
 function renderStep() {
-  imageLabel.textContent = demoSteps[currentStep].image;
+  const step = demoSteps[currentStep];
+  imageLabel.textContent = step.image;
+  demoImage.classList.remove('has-demo-image');
+  demoImage.style.removeProperty('background-image');
+
+  const image = new Image();
+  image.onload = () => {
+    if (demoSteps[currentStep].imageSrc !== step.imageSrc) return;
+    demoImage.style.backgroundImage = `url('${step.imageSrc}')`;
+    demoImage.classList.add('has-demo-image');
+  };
+  image.onerror = () => {
+    if (demoSteps[currentStep].imageSrc !== step.imageSrc) return;
+    demoImage.classList.remove('has-demo-image');
+    demoImage.style.removeProperty('background-image');
+  };
+  image.src = step.imageSrc;
+
   dots.forEach((dot, index) => dot.classList.toggle('active', index <= currentStep));
 }
 
