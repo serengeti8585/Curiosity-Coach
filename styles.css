@@ -115,6 +115,12 @@ h3 { font-size: 1.15rem; }
 .chat-panel { overflow: hidden; display: flex; flex-direction: column; min-height: 520px; }
 .chat-header { display: flex; justify-content: space-between; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--line); background: #fbfefe; }
 .chat-header span { color: var(--muted); font-size: .9rem; }
+.demo-coaching-card { margin: 16px 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, #ffffff, #eef8f6); }
+.demo-coaching-card p { margin: 8px 0 0; color: var(--muted); font-size: .94rem; }
+.coaching-label { display: block; color: var(--brand); text-transform: uppercase; letter-spacing: .09em; font-size: .68rem; font-weight: 900; margin-bottom: 4px; }
+.sentence-starters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.sentence-starters button { border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--brand-dark); padding: 8px 10px; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
+.sentence-starters button:hover { border-color: var(--brand); }
 .chat-window { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
 .message { max-width: 84%; padding: 13px 15px; border-radius: 18px; }
 .message.coach { background: var(--soft); align-self: flex-start; }
@@ -126,6 +132,7 @@ h3 { font-size: 1.15rem; }
 .chat-form button { background: var(--brand); color: white; }
 .demo-controls { display: flex; justify-content: flex-end; gap: 10px; padding: 0 16px 16px; }
 .demo-controls button { background: #eef4f3; color: var(--ink); }
+.demo-controls button:first-child { background: var(--soft); color: var(--brand-dark); }
 
 .contact-card { padding: 38px; text-align: center; }
 .placeholder-contact { font-weight: 800; color: var(--brand-dark); }
