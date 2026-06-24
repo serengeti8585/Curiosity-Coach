@@ -19,124 +19,226 @@ const demoSteps = [
     image: 'Image 1: Galápagos shoreline',
     imageSrc: 'assets/images/galapagos-shoreline.PNG',
     move: 'Observe',
-    goal: 'Separate what you can see from what you might infer about the landscape.',
-    coach: 'You are my assistant in the Galápagos. Today we shall not begin with answers. We shall begin as naturalists do — with careful observation. Look carefully at this rocky landscape. What do you observe?',
-    hint: 'Begin with visible evidence: volcanic rock, dry land, sparse vegetation, or signs that food may be limited.',
-    starters: ['I observe...', 'The land appears...', 'Evidence I can see is...'],
-    lookFor: ['rock', 'rocky', 'volcanic', 'lava', 'dry', 'plant', 'vegetation', 'sparse', 'few', 'food', 'resource', 'barren', 'shore', 'coast'],
-    briefFeedback: 'Rocks indeed. I came on this voyage to study rock, but I have become more and more intrigued by living things. Look beyond the rocks for a moment. What else catches your eye? Is there anything you expected to see on land that seems scarce here?',
+    journal: 'Observations',
+    goal: 'Name only what can be seen before deciding what it means.',
+    coach: 'You are my assistant in the Galápagos. Today we shall not begin with answers. We shall begin as naturalists do — with careful observation. Observation is what we can see directly. Inference is what we think it may mean. Look carefully at this shore. What can you observe?',
+    hint: 'Use visible evidence only: rocks, dark rough surfaces, dry ground, few plants, shore, water, animals, or algae. Avoid explaining what it means yet.',
+    starters: ['I observe...', 'I can see...', 'Visible evidence is...'],
+    lookFor: ['rock', 'rocks', 'dark', 'rough', 'dry', 'plant', 'plants', 'vegetation', 'few', 'sparse', 'shore', 'coast', 'water', 'iguana', 'algae'],
+    inferenceTerms: ['volcanic', 'lava', 'harsh', 'barren', 'limited food', 'resource', 'starving'],
+    briefFeedback: 'That is a beginning. Let us make it more precise: what can your eyes see directly?',
     feedback: {
-      strong: 'That is careful observing. We can see volcanic rock, dry land, and little vegetation. Now we should ask what those observations might mean for animals trying to live here.',
-      partial: 'That is a useful beginning. Let us examine that more carefully: is your statement an observation from the image, or an inference about what life here may be like? Add one more piece of visible evidence.'
+      strong: 'Good. You are keeping close to the evidence. Now we may ask what those visible details suggest.',
+      partial: 'That may include an inference. For example, “volcanic rock” may be an inference unless you name the visible evidence. What do you see directly?'
+    }
+  },
+  {
+    image: 'Image 1: Galápagos shoreline',
+    imageSrc: 'assets/images/galapagos-shoreline.PNG',
+    move: 'Infer',
+    journal: 'My Inferences',
+    goal: 'Use observations to infer what the landscape may be like for animals.',
+    coach: 'Now let us move from observation to inference. From the dry rock and the amount of vegetation you observed, what do you infer about this environment?',
+    hint: 'Connect a visible observation to a possible meaning: few plants may suggest a dry, harsh place with limited land food.',
+    starters: ['This suggests...', 'I infer that...', 'Because I observed...'],
+    lookFor: ['dry', 'harsh', 'few', 'scarce', 'sparse', 'limited', 'little', 'plant', 'plants', 'vegetation', 'food', 'resource', 'difficult'],
+    feedback: {
+      strong: 'A reasonable inference. You have moved from what is seen to what it may mean, and you used evidence to do it.',
+      partial: 'Let us tie the inference to evidence. Which observation makes you think the environment might be difficult for animals?'
     }
   },
   {
     image: 'Image 1: Galápagos shoreline',
     imageSrc: 'assets/images/galapagos-shoreline.PNG',
     move: 'Question',
-    goal: 'Use the landscape evidence to reason about available food and resources.',
-    coach: 'Do you think there is enough food here for many land animals? What evidence makes you think so?',
-    hint: 'Use evidence from the image. Sparse plants, dry ground, and bare rock can suggest limited land food.',
-    starters: ['I think...', 'The evidence is...', 'If plants are scarce...'],
-    lookFor: ['food', 'plant', 'vegetation', 'scarce', 'little', 'limited', 'few', 'dry', 'rock', 'resource', 'not enough', 'enough'],
-    vegetationFeedback: 'Yes… that troubled me as well. If plants are scarce, what difficulty might that create for animals trying to survive here?',
+    journal: 'My Inferences',
+    goal: 'Reason about land food resources without being told the conclusion.',
+    coach: 'If an iguana lived on this land, what problem might it face in finding food? What evidence supports your idea?',
+    hint: 'Look for evidence about plants and dry land. Then explain what that could mean for land food.',
+    starters: ['The problem might be...', 'The evidence is...', 'If plants are scarce...'],
+    lookFor: ['food', 'eat', 'plant', 'plants', 'vegetation', 'scarce', 'little', 'limited', 'few', 'dry', 'rock', 'resource', 'hard', 'difficult'],
+    vegetationFeedback: 'Yes… that troubled me as well. If land plants are scarce, where else might an animal search for food?',
     feedback: {
-      strong: 'A sensible hypothesis. You are using evidence from the landscape to reason about resources, not merely guessing.',
-      partial: 'What evidence do we have? Point to something visible in the landscape, then explain how it might affect food for land animals.'
+      strong: 'Yes. You have not merely named the landscape; you have reasoned about a survival problem it could create.',
+      partial: 'What difficulty follows from few plants or much bare rock? Try stating the problem an animal would face.'
     }
   },
   {
     image: 'Image 2: Iguanas feeding near the shore',
     imageSrc: 'assets/images/marine-iguana.PNG',
     move: 'Connect evidence',
-    goal: 'Connect shoreline algae to the problem of limited land vegetation.',
-    coach: 'Look there, near the water’s edge. These iguanas appear to be feeding. What do you see them eating?',
-    hint: 'Look for the food source near the shore. How could algae matter if land vegetation is scarce?',
-    starters: ['They appear to eat...', 'That food source might...', 'This connects to the dry land because...'],
-    lookFor: ['algae', 'seaweed', 'food', 'eat', 'eating', 'shore', 'water', 'plants', 'vegetation', 'limited', 'scarce'],
+    journal: 'Observations',
+    goal: 'Observe a possible shoreline food source.',
+    coach: 'Look there, near the water’s edge. What do you observe the iguanas doing, and what appears to be near their mouths?',
+    hint: 'Name the behavior and the visible food source near the shore.',
+    starters: ['I observe...', 'They appear to be...', 'Near their mouths I see...'],
+    lookFor: ['eat', 'eating', 'feed', 'feeding', 'algae', 'seaweed', 'shore', 'water', 'mouth'],
     feedback: {
-      strong: 'Yes. These animals remind me of iguanas from the coast of South America, yet here they seem to depend upon the sea. Why might that be?',
-      partial: 'That is curious. Look at what is near their mouths and at the shoreline. What food source might the sea provide when land plants are scarce?'
+      strong: 'That is curious. You have observed a possible food source at the edge of the sea.',
+      partial: 'Look closely at the shoreline and their mouths. What might they be feeding on?'
+    }
+  },
+  {
+    image: 'Image 2: Iguanas feeding near the shore',
+    imageSrc: 'assets/images/marine-iguana.PNG',
+    move: 'Infer',
+    journal: 'My Inferences',
+    goal: 'Infer why algae might matter when land food appears limited.',
+    coach: 'What do you make of it? Connect your earlier inference about land food to this shoreline algae.',
+    hint: 'Build the connection: limited land vegetation → need for food → algae may be an important resource.',
+    starters: ['Because land food seems...', 'Algae might matter because...', 'This connects because...'],
+    lookFor: ['limited', 'scarce', 'little', 'few', 'land', 'plant', 'vegetation', 'food', 'resource', 'algae', 'seaweed', 'need'],
+    feedback: {
+      strong: 'A reasonable inference. If land food is limited, algae could become important — and you made that connection from evidence.',
+      partial: 'You have one part of the idea. Now connect it to the earlier problem: why would algae matter if land vegetation is scarce?'
     }
   },
   {
     image: 'Image 2: Iguanas feeding near the shore',
     imageSrc: 'assets/images/marine-iguana.PNG',
     move: 'Predict',
-    goal: 'Predict how changing tides could make food harder to reach.',
-    coach: 'At low tide the algae is exposed. But what happens when the tide rises and covers it?',
-    hint: 'Think about where the algae goes at high tide and what an iguana would need to do to reach it.',
-    starters: ['When the tide rises...', 'The algae would...', 'A behavior that could help is...'],
+    journal: 'My Hypotheses',
+    goal: 'Predict how tides could change access to food.',
+    coach: 'At low tide the algae may be exposed. But suppose the tide rises and covers it. What might an iguana need to do then?',
+    hint: 'If the food is covered by water, predict a behavior that could help the iguana reach it.',
+    starters: ['When the tide rises...', 'The iguana might need to...', 'A helpful behavior could be...'],
     lookFor: ['underwater', 'covered', 'water', 'swim', 'swimming', 'dive', 'diving', 'reach', 'tide', 'submerged', 'food'],
     feedback: {
-      strong: 'A sensible hypothesis. If the food is underwater, an iguana that can swim or dive may reach food that others cannot.',
-      partial: 'Let us follow the evidence. If the algae is covered by water, where is the food, and what might an iguana need to do to reach it?'
+      strong: 'A sensible hypothesis. If the food is underwater, entering the water could help an iguana reach what land cannot provide.',
+      partial: 'Let us follow the evidence. If the algae is covered by water, where is the food, and what behavior might give access to it?'
     }
   },
   {
     image: 'Image 3: Iguana swimming underwater',
     imageSrc: 'assets/images/underwater-iguana.PNG',
-    move: 'Explain variation',
-    goal: 'Use variation, survival, reproduction, and generations to explain adaptation.',
-    coach: 'I confess, this puzzles me. I have seen iguanas on the mainland avoid the sea, yet here they enter the water. What might explain such a difference?',
-    hint: 'Build the chain: some iguanas vary in water tolerance or swimming, those individuals get more food, survive and reproduce, and over generations helpful traits become more common.',
-    starters: ['Some iguanas may vary in...', 'Those individuals could get more food because...', 'Over many generations...'],
-    lookFor: ['variation', 'vary', 'swim', 'water', 'tolerate', 'food', 'survive', 'reproduce', 'offspring', 'generation', 'common', 'trait', 'adaptation'],
+    move: 'Question',
+    journal: 'My Hypotheses',
+    goal: 'Explain why swimming could be useful and risky.',
+    coach: 'I confess, this puzzles me. Iguanas on the mainland avoid the sea, yet these animals enter the water willingly. Why might entering the water be useful, and what risks might it bring?',
+    hint: 'Consider both sides: food access may be useful, while cold water, energy cost, waves, or predators may be risky.',
+    starters: ['It might be useful because...', 'A risk could be...', 'The tradeoff is...'],
+    lookFor: ['food', 'algae', 'reach', 'useful', 'risk', 'risky', 'cold', 'energy', 'waves', 'predator', 'danger', 'swim'],
     feedback: {
-      strong: 'Yes. You are explaining the difference with variation and evidence: some individuals could use the sea more successfully, gain food, survive, and leave offspring.',
-      partial: 'A useful explanation needs the whole chain. What variation might exist among iguanas, and how would that affect food, survival, and reproduction over generations?'
+      strong: 'Yes. You are treating the sea as both opportunity and hazard. That is the sort of tradeoff naturalists must examine.',
+      partial: 'Good start, but revise it to include both parts: what benefit might the sea offer, and what danger or cost might it impose?'
+    }
+  },
+  {
+    image: 'Image 3: Iguana swimming underwater',
+    imageSrc: 'assets/images/underwater-iguana.PNG',
+    move: 'Infer',
+    journal: 'My Inferences',
+    goal: 'Infer why cold water is a special challenge for reptiles.',
+    coach: 'Let us examine one risk. Reptiles depend greatly on outside warmth. If an iguana spends time in cold ocean water, what problem might follow?',
+    hint: 'Think about body temperature, movement, energy, and how cold water could slow a reptile.',
+    starters: ['Cold water could...', 'Because reptiles rely on...', 'This might make it harder to...'],
+    lookFor: ['cold', 'body temperature', 'temperature', 'warm', 'heat', 'slow', 'sluggish', 'energy', 'move', 'reptile', 'cold-blooded'],
+    feedback: {
+      strong: 'Yes… that troubled me as well. Cold water could lower body temperature and make movement more difficult.',
+      partial: 'A useful idea, but make the body-temperature link clearer. What might cold water do to a reptile’s ability to move or use energy?'
     }
   },
   {
     image: 'Image 4: Iguanas basking on rocks',
     imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
-    move: 'Observe a tradeoff',
-    goal: 'Notice that feeding in the sea creates new problems: cold water and salt.',
-    coach: 'Now we have another puzzle. An iguana that feeds in the sea gains food, but also faces cold water and salt. Look carefully. What are these iguanas doing on the rocks?',
-    hint: 'Think about body temperature and energy after swimming in cold ocean water.',
-    starters: ['They appear to be...', 'This could help because...', 'After swimming...'],
-    lookFor: ['bask', 'basking', 'sun', 'warming', 'warm', 'heat', 'rocks', 'rest', 'energy', 'cold'],
+    move: 'Revise',
+    journal: 'Evidence Collected',
+    goal: 'Revise the swimming idea by adding basking as part of the evidence chain.',
+    coach: 'Now observe these iguanas on sunlit rocks after time near the sea. What might basking accomplish, given the cold-water problem you just described?',
+    hint: 'Connect the chain: swimming to reach algae → cold water lowers body temperature → basking may restore warmth.',
+    starters: ['Basking might...', 'This revises my idea because...', 'After swimming, they may need to...'],
+    lookFor: ['bask', 'basking', 'sun', 'warming', 'warm', 'heat', 'rocks', 'cold', 'temperature', 'after swimming', 'recover'],
     feedback: {
-      strong: 'Yes. Basking could help them warm after swimming and conserve energy. The sea provides food, but it also imposes a cost.',
-      partial: 'Look at their position on the sunlit rocks. What might an animal need after leaving cold water?'
+      strong: 'A careful revision. Swimming is not only “get food”; it also creates a body-temperature problem that basking may help solve.',
+      partial: 'You are close. Link the behavior on the rocks to the earlier cold-water challenge. Why warm up after swimming?'
     }
   },
   {
     image: 'Image 4: Iguanas expelling salt',
     imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
-    move: 'Reason from evidence',
-    goal: 'Infer why salt removal helps an animal survive on a salty marine diet.',
-    coach: 'Did you see that? One appears to be forcing something from its nostrils. What do you suppose it is?',
-    hint: 'The animal has just fed in salt water. What might it need to remove from its body?',
-    starters: ['It might be...', 'The evidence is...', 'Because it fed in the sea...'],
-    lookFor: ['salt', 'salty', 'excess salt', 'remove', 'expel', 'sneeze', 'nostril', 'sea', 'ocean', 'diet'],
-    waterFeedback: 'Perhaps. Yet water alone would not explain why this happens after feeding in the sea. The animal has just returned from salt water. There must be a connection. What else might it need to remove?',
+    move: 'Investigate',
+    journal: 'Observations',
+    goal: 'Investigate the salt-sneezing mystery from evidence.',
+    coach: 'Another mystery: one appears to force something from its nostrils. Before we decide why, what substances from the sea enter an animal while feeding there?',
+    hint: 'Think about what seawater contains and what might enter with marine algae.',
+    starters: ['From the sea it might take in...', 'Seawater contains...', 'While feeding it may swallow...'],
+    lookFor: ['water', 'salt', 'salty', 'seawater', 'algae', 'minerals'],
     feedback: {
-      strong: 'Yes, of course — excess salt. A useful explanation. Eating from the sea creates a problem the animal must solve.',
-      partial: 'Let us examine that more carefully. What substance from the sea could build up as the iguana feeds, and why would removing it help survival?'
+      strong: 'Good. Water and salt are both plausible. Now we must decide which could become troublesome.',
+      partial: 'Think of seawater itself. Besides food, what might enter the mouth or body while feeding in the sea?'
+    }
+  },
+  {
+    image: 'Image 4: Iguanas expelling salt',
+    imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
+    move: 'Infer',
+    journal: 'My Inferences',
+    goal: 'Infer which sea substance could become harmful in excess.',
+    coach: 'Which of those substances might become problematic if too much accumulates in the body? Why?',
+    hint: 'Too much salt can disturb an animal’s internal balance. Explain why removing it could help survival.',
+    starters: ['Too much ... could...', 'The problematic substance is...', 'Removing it would help because...'],
+    lookFor: ['salt', 'salty', 'excess', 'too much', 'build up', 'accumulate', 'remove', 'balance', 'harm', 'survive'],
+    waterFeedback: 'Perhaps water enters, yes. But water alone is not the whole puzzle. Which dissolved substance in seawater might be harmful if it builds up?',
+    feedback: {
+      strong: 'A reasonable inference: excess salt could become a problem for an animal feeding from the sea.',
+      partial: 'Let us refine the idea. Which substance in seawater is most likely to be harmful if too much remains in the body?'
+    }
+  },
+  {
+    image: 'Image 4: Iguanas expelling salt',
+    imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
+    move: 'Hypothesize',
+    journal: 'My Hypotheses',
+    goal: 'Hypothesize what salt sneezing accomplishes.',
+    coach: 'Then what might the sneezing accomplish? State it as a hypothesis and connect it to survival.',
+    hint: 'Use: If iguanas take in excess salt while feeding, then sneezing may help remove it, which could help them survive on algae from the sea.',
+    starters: ['My hypothesis is...', 'If they take in salt...', 'This could help survival because...'],
+    lookFor: ['salt', 'remove', 'expel', 'sneeze', 'nostril', 'excess', 'survive', 'sea', 'feeding'],
+    feedback: {
+      strong: 'Yes. That hypothesis explains the behavior as a solution to a problem created by feeding in the sea.',
+      partial: 'Revise the hypothesis so it includes three parts: the sea introduces salt, sneezing removes it, and removal helps survival.'
+    }
+  },
+  {
+    image: 'Image 3: Iguana swimming underwater',
+    imageSrc: 'assets/images/underwater-iguana.PNG',
+    move: 'Explain adaptation',
+    journal: 'My Hypotheses',
+    goal: 'Use variation, survival, reproduction, and natural selection to explain adaptation.',
+    coach: 'Let us gather the pieces. Among many iguanas, individuals may vary: some may swim better, tolerate cold longer, bask effectively, or remove salt better. How could such variation lead, over many generations, to marine iguanas adapted to this place?',
+    hint: 'Connect variation → more food or better survival → more reproduction → helpful traits becoming more common over generations.',
+    starters: ['Some iguanas may vary in...', 'Those individuals could survive because...', 'Over many generations...'],
+    lookFor: ['variation', 'vary', 'trait', 'swim', 'cold', 'salt', 'bask', 'food', 'survive', 'reproduce', 'offspring', 'generation', 'common', 'natural selection', 'adaptation'],
+    feedback: {
+      strong: 'Yes. You are explaining with evidence and mechanism: variation, survival, reproduction, and change over generations.',
+      partial: 'A useful explanation needs the full chain. What variation helps, how does it affect survival, and how would reproduction change the population over generations?'
     }
   },
   {
     image: 'Image 4: Field journal conclusion',
     imageSrc: 'assets/images/iguana-salt-sneeze.PNG',
     move: 'Conclude',
-    goal: 'Write a final explanation using observations, evidence, and reasoning.',
-    coach: 'Let me see your journal. You have done well today. You observed, questioned, and followed the evidence.\n\nField notes summary\n\nObservations:\n• Rocky volcanic landscape\n• Sparse vegetation\n• Iguanas feeding on shoreline algae\n• Iguanas entering the water to feed\n• Iguanas basking on rocks\n• Iguanas expelling salt\n\nInferences:\n• Land food may be limited\n• Algae provides a food source\n• Swimming allows access to more algae\n• Basking helps recover from cold water\n• Salt sneezing helps remove excess salt\n\nScience Connection:\n• Individuals vary.\n• Some variations help survival and reproduction.\n• Over many generations, natural selection can shape adaptations.\n\nUsing your observations, evidence, and reasoning, write a conclusion explaining how marine iguanas became adapted to life in the Galápagos.',
-    hint: 'Use this structure: limited land food → algae as food → variation in swimming, cold tolerance, and salt removal → better survival and reproduction → adaptations become common over generations.',
-    starters: ['Marine iguanas became adapted because...', 'The evidence shows...', 'Over many generations...'],
-    lookFor: ['limited', 'algae', 'swim', 'salt', 'bask', 'variation', 'survive', 'reproduce', 'generation', 'natural selection', 'adaptation'],
+    journal: 'Evidence Collected',
+    goal: 'Write a final explanation using your own observations, evidence, and reasoning.',
+    coach: `Let me see your field journal. I shall include only ideas you have generated during our investigation.
+
+Using your observations, evidence, and reasoning, write a final explanation: How did marine iguanas become adapted to life in the Galápagos? Use variation, survival, reproduction, and natural selection.`,
+    hint: 'Use only ideas from your journal. Explain how the environment created challenges, how some iguanas varied, and why helpful traits became more common through survival and reproduction.',
+    starters: ['Marine iguanas became adapted because...', 'The evidence from my investigation shows...', 'Over many generations, natural selection...'],
+    lookFor: ['limited', 'algae', 'swim', 'cold', 'salt', 'bask', 'variation', 'survive', 'reproduce', 'generation', 'natural selection', 'adaptation', 'evidence'],
     feedback: {
-      strong: 'That conclusion follows the evidence: environment, variation, survival, reproduction, and change over generations are all connected.',
-      partial: 'Your conclusion should connect the evidence to natural selection. Include the environment, helpful variations, survival and reproduction, and change over many generations.'
+      strong: 'That conclusion follows the evidence. You have reasoned from observations to hypotheses and then to an explanation using natural selection.',
+      partial: 'Revise your explanation to include evidence, variation, survival, reproduction, and change over many generations.'
     }
   }
 ];
-
 const chatWindow = document.querySelector('#chat-window');
 const chatForm = document.querySelector('#chat-form');
 const studentInput = document.querySelector('#student-input');
 const demoImage = document.querySelector('#demo-image');
 const imageLabel = document.querySelector('#image-label');
+const progress = document.querySelector('.demo-progress');
+progress.innerHTML = demoSteps.map(() => '<span class="dot"></span>').join('');
 const dots = Array.from(document.querySelectorAll('.dot'));
 const resetButton = document.querySelector('#reset-demo');
 const backButton = document.querySelector('#back-step');
@@ -198,7 +300,7 @@ function includesAny(normalized, terms) {
 
 function isOffTopic(normalized) {
   const investigationTerms = [
-    'rock', 'volcanic', 'lava', 'dry', 'plant', 'vegetation', 'food', 'resource', 'iguana', 'algae', 'seaweed', 'shore', 'water', 'tide', 'swim', 'dive', 'salt', 'sneeze', 'bask', 'sun', 'warm', 'cold', 'survive', 'reproduce', 'generation', 'trait', 'adaptation', 'natural selection', 'observe', 'evidence'
+    'rock', 'volcanic', 'lava', 'dry', 'plant', 'vegetation', 'food', 'resource', 'iguana', 'algae', 'seaweed', 'shore', 'coast', 'mouth', 'water', 'tide', 'swim', 'dive', 'salt', 'sneeze', 'nostril', 'bask', 'sun', 'warm', 'heat', 'temperature', 'cold', 'survive', 'reproduce', 'generation', 'trait', 'variation', 'adaptation', 'natural selection', 'observe', 'evidence', 'infer', 'hypothesis'
   ];
   const inappropriateTerms = ['kill', 'hate', 'sex', 'nude', 'drugs', 'weapon', 'bomb', 'stupid', 'idiot'];
   const words = normalized.split(/\s+/).filter(Boolean);
@@ -214,39 +316,50 @@ function evaluateResponse(response, step) {
   const hasReasoning = /because|so|therefore|this suggests|which means|in order to|if |would|could|might/.test(normalized);
   const isDetailed = response.split(/\s+/).filter(Boolean).length >= 8;
   const score = matches.length + (hasReasoning ? 1 : 0) + (isDetailed ? 1 : 0);
+  const makesInferenceDuringObservation = step.inferenceTerms && includesAny(normalized, step.inferenceTerms);
 
   return {
     isBrief: response.split(/\s+/).filter(Boolean).length <= 3,
     isOffTopic: isOffTopic(normalized),
-    isStrong: score >= 3,
+    isStrong: score >= 3 && !makesInferenceDuringObservation,
     mentionsVegetation: includesAny(normalized, ['plant', 'plants', 'vegetation', 'scarce', 'little vegetation', 'few plants']),
     mentionsWaterOnly: includesAny(normalized, ['water', 'seawater']) && !includesAny(normalized, ['salt', 'salty']),
+    makesInferenceDuringObservation,
     matches
   };
 }
 
 function buildFinalSummary() {
-  const moves = history
-    .map(item => `${demoSteps[item.step].move}: “${item.response}”`)
-    .join(' | ');
+  const sections = ['Observations', 'My Inferences', 'My Hypotheses', 'Evidence Collected'];
+  const grouped = sections.map(section => {
+    const entries = history
+      .filter(item => demoSteps[item.step].journal === section)
+      .map(item => `• ${item.response}`)
+      .join('\n');
+    return `${section}:\n${entries || '• No entry recorded yet.'}`;
+  });
 
-  return `Learning trace captured: ${moves}`;
+  return `Field journal summary — student-generated ideas only\n\n${grouped.join('\n\n')}`;
 }
 
 function getCoachFeedback(step, evaluation) {
   if (evaluation.isOffTopic) {
-    return 'Let us stay with the investigation. Look carefully at the image and tell me what you observe.';
+    return 'That is outside our investigation. Let us return to the evidence before us.';
+  }
+
+  if (currentStep === 0 && evaluation.makesInferenceDuringObservation) {
+    return step.feedback.partial;
   }
 
   if (currentStep === 0 && evaluation.isBrief && step.briefFeedback) {
     return step.briefFeedback;
   }
 
-  if (currentStep === 1 && evaluation.mentionsVegetation && step.vegetationFeedback) {
+  if (currentStep === 2 && evaluation.mentionsVegetation && step.vegetationFeedback) {
     return step.vegetationFeedback;
   }
 
-  if (currentStep === 6 && evaluation.mentionsWaterOnly && step.waterFeedback) {
+  if (currentStep === 10 && evaluation.mentionsWaterOnly && step.waterFeedback) {
     return step.waterFeedback;
   }
 
@@ -258,7 +371,7 @@ function startDemo() {
   history = [];
   chatWindow.innerHTML = '';
   renderStep();
-  addMessage('This demo acts like a guided AI coach, but it is only a scripted prototype.', 'system');
+  addMessage('Darwin Demo v3.0: a guided scientific investigation with a scripted coach prototype.', 'system');
   addMessage('Use the thinking move, sentence starters, and Hint button if you want more scaffolding.', 'system');
   addMessage(demoSteps[currentStep].coach, 'coach');
 }
@@ -268,23 +381,25 @@ function advanceDemo(response) {
   const evaluation = evaluateResponse(response, step);
 
   addMessage(response, 'student');
-  history.push({ step: currentStep, response, matches: evaluation.matches });
 
   const coachFeedback = getCoachFeedback(step, evaluation);
   addMessage(coachFeedback, 'coach');
 
-  if (!evaluation.isStrong && !evaluation.isOffTopic) {
-    addMessage(`Scaffold: ${step.hint}`, 'coach');
-  }
-
   if (evaluation.isOffTopic) return;
+
+  history.push({ step: currentStep, response, matches: evaluation.matches });
+
+  if (!evaluation.isStrong) {
+    addMessage(`Scaffold: ${step.hint}`, 'coach');
+    return;
+  }
 
   if (currentStep < demoSteps.length - 1) {
     currentStep += 1;
     renderStep();
     setTimeout(() => addMessage(demoSteps[currentStep].coach, 'coach'), 350);
   } else {
-    addMessage('Demo complete. Notice how the value is not just the final answer. The full interaction shows observations, questions, inferences, evidence connections, and revisions.', 'system');
+    addMessage('Investigation complete. Notice how the journal shows your observations, inferences, hypotheses, evidence connections, and revisions.', 'system');
     addMessage(buildFinalSummary(), 'system');
   }
 }
