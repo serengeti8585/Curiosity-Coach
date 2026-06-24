@@ -122,7 +122,7 @@ h3 { font-size: 1.15rem; }
 .sentence-starters button { border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--brand-dark); padding: 8px 10px; font: inherit; font-size: .82rem; font-weight: 800; cursor: pointer; }
 .sentence-starters button:hover { border-color: var(--brand); }
 .chat-window { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-.message { max-width: 84%; padding: 13px 15px; border-radius: 18px; }
+.message { max-width: 84%; padding: 13px 15px; border-radius: 18px; white-space: pre-line; }
 .message.coach { background: var(--soft); align-self: flex-start; }
 .message.student { background: #f7eadb; align-self: flex-end; }
 .message.system { background: #f4f7f7; align-self: center; color: var(--muted); font-size: .88rem; }
