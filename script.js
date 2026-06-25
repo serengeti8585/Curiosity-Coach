@@ -522,7 +522,7 @@ function startDemo() {
   redirectedByStep = {};
   chatWindow.innerHTML = '';
   renderStep();
-  addMessage('Darwin Demo v3.0: a guided scientific investigation with a scripted coach prototype.', 'system');
+  addMessage('Version 3.1 Scientific Inquiry Experience: a guided scientific investigation with a scripted coach prototype.', 'system');
   addMessage('Use the thinking move, sentence starters, and Hint button if you want more scaffolding.', 'system');
   addMessage(demoSteps[currentStep].coach, 'coach');
 }

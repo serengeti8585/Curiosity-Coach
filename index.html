@@ -20,7 +20,7 @@
       <div class="nav-links" id="nav-links">
         <a href="#problem">Problem</a>
         <a href="#approach">Approach</a>
-        <a href="#demo">Darwin Demo</a>
+        <a href="#demo">Inquiry Experience</a>
         <a href="#teachers">Teachers</a>
         <a href="#admins">Administrators</a>
         <a href="#contact">Contact</a>
@@ -36,7 +36,7 @@
           <h1>AI should not replace student thinking. It should make thinking visible.</h1>
           <p class="lead">Curiosity Coach helps students observe, question, infer, revise, and explain. Instead of giving answers away, it guides students through the thinking that leads to stronger learning.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#demo">Try the Darwin Demo</a>
+            <a class="button primary" href="#demo">Try the Inquiry Experience</a>
             <a class="button secondary" href="#approach">See the approach</a>
           </div>
         </div>
@@ -91,8 +91,39 @@
     <section id="demo" class="section demo-section">
       <div class="container">
         <p class="eyebrow">Interactive prototype</p>
-        <h2>Darwin Demo v3.0: Galápagos Marine Iguanas</h2>
-        <p class="section-intro">This scripted simulation models a guided scientific investigation: students observe, infer, revise, and explain from evidence. No login, backend, or student data collection is included.</p>
+        <h2>Scientific Inquiry Experience</h2>
+        <p class="demo-subtitle">Featuring Charles Darwin as your field mentor</p>
+        <p class="section-intro">Darwin is the first example mentor in this guided investigation, but the purpose is scientific inquiry: students observe evidence, ask questions, make inferences, test hypotheses, revise thinking, and explain with reasoning.</p>
+
+        <div class="prototype-transparency content-card">
+          <h3>Prototype transparency</h3>
+          <p>This interactive prototype demonstrates the instructional framework behind Curiosity Coach. It does not use a Large Language Model. Instead, it uses a scripted decision tree to show how students can be guided through observation, questioning, inference, hypothesis, revision, and explanation.</p>
+          <p>Because this prototype follows predefined pathways rather than understanding natural language, visitors may occasionally need to rephrase or clarify an answer. Curiosity Coach uses an LLM to understand the meaning behind student responses, adapt its coaching in real time, and personalize guidance while remaining under teacher control.</p>
+          <p class="prototype-purpose">The purpose of this prototype is to demonstrate the instructional design — not the AI itself.</p>
+        </div>
+
+        <div class="comparison-box" aria-label="Prototype and Curiosity Coach comparison">
+          <article>
+            <h3>This Prototype</h3>
+            <ul class="check-list">
+              <li>Scripted decision tree</li>
+              <li>Demonstrates the instructional framework</li>
+              <li>Predefined coaching paths</li>
+              <li>No AI or student data</li>
+              <li>Illustrates the concept</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Curiosity Coach</h3>
+            <ul class="check-list">
+              <li>Natural language conversation</li>
+              <li>Understands student meaning and intent</li>
+              <li>Dynamically adapts to each student’s reasoning</li>
+              <li>Teacher-controlled AI guidance</li>
+              <li>Full guided inquiry experience</li>
+            </ul>
+          </article>
+        </div>
 
         <div class="demo-layout">
           <aside class="image-panel">
@@ -107,7 +138,7 @@
           <section class="chat-panel" aria-label="Darwin demo chat simulation">
             <div class="chat-header">
               <strong>Curiosity Coach Demo</strong>
-              <span>Guided inquiry v3.0</span>
+              <span>Guided inquiry v3.1</span>
             </div>
             <div class="demo-coaching-card" id="demo-coaching-card" aria-live="polite">
               <div>
@@ -137,11 +168,41 @@
       <div class="container two-column">
         <div>
           <p class="eyebrow">For teachers</p>
-          <h2>Use Curiosity Coach after instruction.</h2>
+          <h2>Teacher-controlled learning experiences.</h2>
         </div>
         <div class="content-card">
-          <p>Teachers can use CC after direct instruction, videos, slides, readings, labs, or demonstrations. The teacher provides the learning focus, and CC guides students through structured thinking.</p>
-          <p>Because the guide asks questions instead of simply giving answers, it can support ESE, ELL, standard, and advanced students with different levels of scaffolding.</p>
+          <p>Teachers determine the content, focus, standards, images, and instructional goals. Curiosity Coach does not replace the teacher or curriculum; it guides students through teacher-selected learning experiences.</p>
+          <p>Teachers can use CC after direct instruction, videos, slides, readings, labs, or demonstrations. The teacher provides the learning focus, and CC guides students through structured thinking that keeps evidence and reasoning visible.</p>
+          <ul class="check-list">
+            <li>Teacher-selected standards and learning targets</li>
+            <li>Teacher-approved sources, images, and prompts</li>
+            <li>Guidance that supports—not replaces—instruction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="differentiation" class="section panel-section">
+      <div class="container">
+        <p class="eyebrow">Differentiated instruction</p>
+        <h2>The same lesson can meet different learners where they are.</h2>
+        <div class="support-grid">
+          <article class="support-card"><h3>AP students</h3><p>Receive deeper reasoning prompts that ask them to evaluate mechanisms, qualify claims, and connect evidence across steps.</p></article>
+          <article class="support-card"><h3>Standard students</h3><p>Receive guided evidence-based questions that help them explain why an answer makes sense instead of stopping at a conclusion.</p></article>
+          <article class="support-card"><h3>ESE and ELL students</h3><p>Receive more scaffolding, sentence starters, vocabulary support, and step-by-step guidance while working toward the same instructional goal.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="subjects" class="section">
+      <div class="container">
+        <p class="eyebrow">Across subjects</p>
+        <h2>Curiosity Coach can guide inquiry beyond one topic.</h2>
+        <div class="subject-grid">
+          <article class="subject-card"><h3>Science</h3><p>Students investigate marine iguanas by observing evidence, forming hypotheses, and explaining adaptation.</p></article>
+          <article class="subject-card"><h3>Algebra</h3><p>Students explain why each step in solving an equation works instead of only getting the answer.</p></article>
+          <article class="subject-card"><h3>History</h3><p>Students examine primary sources, identify perspective or bias, and build evidence-based historical claims.</p></article>
+          <article class="subject-card"><h3>ELA</h3><p>Students analyze a passage, support interpretation with textual evidence, and revise claims.</p></article>
         </div>
       </div>
     </section>
@@ -171,7 +232,10 @@
 
   <footer class="footer">
     <div class="container footer-content">
-      <span>© 2026 Curiosity Coach Prototype</span>
+      <div class="footer-brand">
+        <span>© 2026 Curiosity Coach Prototype</span>
+        <strong>Version 3.1</strong>
+      </div>
       <span>No login. No backend. No real student data collection.</span>
     </div>
   </footer>
