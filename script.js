@@ -249,6 +249,60 @@ const sentenceStarters = document.querySelector('#sentence-starters');
 
 let currentStep = 0;
 let history = [];
+let stepAttempts = {};
+let lastPromptByStep = {};
+let redirectedByStep = {};
+
+const reasoningTerms = /because|so|therefore|this suggests|which means|in order to|if |would|could|might|leads to|makes it|helps|allows/;
+const helpTerms = ['i don\'t know', 'dont know', 'do not know', 'not sure', 'help me', 'help', 'hint'];
+
+const responsePatterns = [
+  {
+    name: 'landFoodScarcity',
+    terms: ['food', 'not enough food', 'limited food', 'scarce food', 'few plants', 'plants', 'vegetation', 'eat', 'hungry', 'starve', 'survive', 'struggle', 'hard to survive', 'difficult to survive']
+  },
+  {
+    name: 'visibleLandscape',
+    terms: ['rock', 'rocks', 'dry', 'few plants', 'plants', 'vegetation', 'shore', 'water', 'dark', 'rough', 'iguana', 'algae', 'green stuff']
+  },
+  {
+    name: 'shoreFood',
+    terms: ['algae', 'seaweed', 'green stuff', 'food underwater', 'underwater food', 'food', 'eat', 'feeding', 'shore', 'water']
+  },
+  {
+    name: 'waterAccess',
+    terms: ['underwater', 'food underwater', 'covered', 'water', 'swim', 'dive', 'reach', 'tide', 'submerged']
+  },
+  {
+    name: 'coldWarmth',
+    terms: ['warm', 'warm up', 'cold', 'temperature', 'body temperature', 'slow', 'sluggish', 'heat', 'sun', 'bask', 'rocks', 'they need to warm up']
+  },
+  {
+    name: 'saltProblem',
+    terms: ['salt', 'salty', 'seawater', 'too much salt', 'remove salt', 'expel salt', 'sneeze', 'nostril', 'balance']
+  },
+  {
+    name: 'selection',
+    terms: ['variation', 'vary', 'trait', 'survive', 'reproduce', 'offspring', 'generation', 'natural selection', 'adaptation', 'adapted']
+  }
+];
+
+const stepExpectations = [
+  { strong: ['visibleLandscape'], broad: [], partial: ['landFoodScarcity'] },
+  { strong: ['landFoodScarcity'], broad: ['visibleLandscape'], partial: [] },
+  { strong: ['landFoodScarcity'], broad: ['visibleLandscape'], partial: ['shoreFood'] },
+  { strong: ['shoreFood'], broad: ['visibleLandscape'], partial: ['waterAccess'] },
+  { strong: ['shoreFood', 'landFoodScarcity'], broad: ['shoreFood'], partial: ['landFoodScarcity', 'waterAccess'] },
+  { strong: ['waterAccess'], broad: ['shoreFood'], partial: [] },
+  { strong: ['shoreFood', 'waterAccess', 'coldWarmth'], broad: ['shoreFood', 'waterAccess'], partial: ['coldWarmth'] },
+  { strong: ['coldWarmth'], broad: ['waterAccess'], partial: [] },
+  { strong: ['coldWarmth'], broad: ['visibleLandscape'], partial: [] },
+  { strong: ['saltProblem', 'shoreFood'], broad: ['shoreFood'], partial: [] },
+  { strong: ['saltProblem'], broad: ['shoreFood'], partial: [] },
+  { strong: ['saltProblem'], broad: [], partial: [] },
+  { strong: ['selection'], broad: ['shoreFood', 'coldWarmth', 'saltProblem'], partial: [] },
+  { strong: ['selection', 'shoreFood'], broad: ['selection'], partial: ['shoreFood', 'coldWarmth', 'saltProblem'] }
+];
 
 function addMessage(text, type = 'coach') {
   const div = document.createElement('div');
@@ -300,7 +354,7 @@ function includesAny(normalized, terms) {
 
 function isOffTopic(normalized) {
   const investigationTerms = [
-    'rock', 'volcanic', 'lava', 'dry', 'plant', 'vegetation', 'food', 'resource', 'iguana', 'algae', 'seaweed', 'shore', 'coast', 'mouth', 'water', 'tide', 'swim', 'dive', 'salt', 'sneeze', 'nostril', 'bask', 'sun', 'warm', 'heat', 'temperature', 'cold', 'survive', 'reproduce', 'generation', 'trait', 'variation', 'adaptation', 'natural selection', 'observe', 'evidence', 'infer', 'hypothesis'
+    'rock', 'volcanic', 'lava', 'dry', 'plant', 'vegetation', 'food', 'resource', 'iguana', 'algae', 'seaweed', 'green', 'shore', 'coast', 'mouth', 'water', 'tide', 'swim', 'dive', 'salt', 'sneeze', 'nostril', 'bask', 'sun', 'warm', 'heat', 'temperature', 'cold', 'survive', 'struggle', 'reproduce', 'generation', 'trait', 'variation', 'adaptation', 'natural selection', 'observe', 'evidence', 'infer', 'hypothesis', 'help', 'know'
   ];
   const inappropriateTerms = ['kill', 'hate', 'sex', 'nude', 'drugs', 'weapon', 'bomb', 'stupid', 'idiot'];
   const words = normalized.split(/\s+/).filter(Boolean);
@@ -310,49 +364,108 @@ function isOffTopic(normalized) {
   return !includesAny(normalized, investigationTerms);
 }
 
+function matchedPatternNames(normalized) {
+  return responsePatterns
+    .filter(pattern => includesAny(normalized, pattern.terms))
+    .map(pattern => pattern.name);
+}
+
+function hasAllPatterns(matches, requiredPatterns) {
+  return requiredPatterns.length > 0 && requiredPatterns.every(pattern => matches.includes(pattern));
+}
+
+function hasAnyPattern(matches, patterns) {
+  return patterns.some(pattern => matches.includes(pattern));
+}
+
 function evaluateResponse(response, step) {
   const normalized = response.toLowerCase();
   const matches = step.lookFor.filter(term => normalized.includes(term));
-  const hasReasoning = /because|so|therefore|this suggests|which means|in order to|if |would|could|might/.test(normalized);
-  const isDetailed = response.split(/\s+/).filter(Boolean).length >= 8;
-  const score = matches.length + (hasReasoning ? 1 : 0) + (isDetailed ? 1 : 0);
+  const patternMatches = matchedPatternNames(normalized);
+  const expectations = stepExpectations[currentStep] || { strong: [], broad: [], partial: [] };
+  const hasReasoning = reasoningTerms.test(normalized);
+  const wordCount = response.split(/\s+/).filter(Boolean).length;
   const makesInferenceDuringObservation = step.inferenceTerms && includesAny(normalized, step.inferenceTerms);
+  const asksForHelp = includesAny(normalized, helpTerms);
+  const strongByPattern = hasAllPatterns(patternMatches, expectations.strong) || (hasAnyPattern(patternMatches, expectations.strong) && (hasReasoning || wordCount >= 4));
+  const broadByPattern = !strongByPattern && hasAnyPattern(patternMatches, expectations.broad);
+  const partialByPattern = !strongByPattern && hasAnyPattern(patternMatches, expectations.partial);
+  const keywordStrong = matches.length >= 3 && !makesInferenceDuringObservation;
+  let category = 'weak';
+
+  if (isOffTopic(normalized)) category = 'offTopic';
+  else if (asksForHelp) category = 'help';
+  else if (currentStep === 0 && makesInferenceDuringObservation) category = 'broad';
+  else if (strongByPattern || keywordStrong) category = 'strong';
+  else if (broadByPattern) category = 'broad';
+  else if (partialByPattern || matches.length > 0) category = 'partial';
 
   return {
-    isBrief: response.split(/\s+/).filter(Boolean).length <= 3,
-    isOffTopic: isOffTopic(normalized),
-    isStrong: score >= 3 && !makesInferenceDuringObservation,
+    category,
+    isBrief: wordCount <= 3,
+    isOffTopic: category === 'offTopic',
+    isStrong: category === 'strong',
+    isProgress: ['strong', 'partial', 'broad'].includes(category),
+    asksForHelp,
     mentionsVegetation: includesAny(normalized, ['plant', 'plants', 'vegetation', 'scarce', 'little vegetation', 'few plants']),
     mentionsWaterOnly: includesAny(normalized, ['water', 'seawater']) && !includesAny(normalized, ['salt', 'salty']),
     makesInferenceDuringObservation,
+    patternMatches,
     matches
   };
 }
 
 function buildFinalSummary() {
-  const sections = ['Observations', 'My Inferences', 'My Hypotheses', 'Evidence Collected'];
+  const sections = ['Observations we recorded', 'Inferences you developed', 'Ideas we revised', 'Evidence for your conclusion'];
+  const journalMap = {
+    Observations: 'Observations we recorded',
+    'My Inferences': 'Inferences you developed',
+    'My Hypotheses': 'Ideas we revised',
+    'Evidence Collected': 'Evidence for your conclusion'
+  };
   const grouped = sections.map(section => {
     const entries = history
-      .filter(item => demoSteps[item.step].journal === section)
+      .filter(item => journalMap[demoSteps[item.step].journal] === section && item.studentGenerated)
       .map(item => `• ${item.response}`)
       .join('\n');
-    return `${section}:\n${entries || '• No entry recorded yet.'}`;
+    return `${section}:\n${entries || '• No student-generated entry recorded yet.'}`;
   });
 
   return `Field journal summary — student-generated ideas only\n\n${grouped.join('\n\n')}`;
 }
 
-function getCoachFeedback(step, evaluation) {
+function nonRepeatingPrompt(message, fallback) {
+  if (lastPromptByStep[currentStep] === message) {
+    lastPromptByStep[currentStep] = fallback;
+    return fallback;
+  }
+  lastPromptByStep[currentStep] = message;
+  return message;
+}
+
+function getTargetedFollowUp(step, evaluation, attempts) {
+  if (currentStep === 0) return 'That is a useful beginning. Let us keep it observational for the moment: what visible details, such as rocks, plants, water, or animals, can your eyes confirm?';
+  if (currentStep === 1) return 'Indeed, survival may be difficult. Let us make the reasoning visible: what resource seems scarce in this landscape?';
+  if (currentStep === 2) return 'Yes, that points toward a food problem. What evidence on the land makes you think food would be limited?';
+  if (currentStep === 4) return 'A sensible inference. Now make the link explicit: why would shoreline algae matter if land food is scarce?';
+  if (currentStep === 6) return 'That is one side of the tradeoff. What is the other side: the benefit of entering the sea, or the risk it creates?';
+  if (currentStep === 7) return 'Reptiles depend on external warmth more than mammals do. What might cold water do to movement or energy?';
+  if (currentStep === 8) return 'Yes, they need warmth. How does basking after swimming answer the cold-water problem?';
+  if (currentStep === 10) return 'Seawater enters the puzzle, yes. Which dissolved substance in seawater can become dangerous if too much remains in the body?';
+  if (currentStep === 12) return 'A useful trait matters only if it helps survival and reproduction. How could helpful variation become common over generations?';
+  if (currentStep === 13) return 'You have pieces of the explanation. Add the mechanism: variation, survival, reproduction, and change over generations.';
+  return attempts > 1 ? `Let us use the hint as a scaffold and keep moving: ${step.hint}` : step.feedback.partial;
+}
+
+function getCoachFeedback(step, evaluation, attempts) {
   if (evaluation.isOffTopic) {
-    return 'That is outside our investigation. Let us return to the evidence before us.';
+    return redirectedByStep[currentStep]
+      ? `Let us set that aside. Here is a stronger scaffold so we can continue: ${step.hint}`
+      : 'That is outside our investigation. Let us return to the evidence before us.';
   }
 
-  if (currentStep === 0 && evaluation.makesInferenceDuringObservation) {
-    return step.feedback.partial;
-  }
-
-  if (currentStep === 0 && evaluation.isBrief && step.briefFeedback) {
-    return step.briefFeedback;
+  if (evaluation.category === 'help') {
+    return `Of course. Here is a scaffold, but keep the reasoning in your hands: ${step.hint}`;
   }
 
   if (currentStep === 2 && evaluation.mentionsVegetation && step.vegetationFeedback) {
@@ -363,12 +476,50 @@ function getCoachFeedback(step, evaluation) {
     return step.waterFeedback;
   }
 
-  return evaluation.isStrong ? step.feedback.strong : step.feedback.partial;
+  if (evaluation.category === 'strong') return step.feedback.strong;
+
+  const followUp = getTargetedFollowUp(step, evaluation, attempts);
+  const fallback = `Another way to say the next step is: ${step.hint}`;
+
+  if (evaluation.category === 'broad') {
+    return nonRepeatingPrompt(`That is a sensible broad idea. What evidence leads you there? ${followUp}`, fallback);
+  }
+
+  if (evaluation.category === 'partial') {
+    return nonRepeatingPrompt(`Indeed, that part is useful. ${followUp}`, fallback);
+  }
+
+  return nonRepeatingPrompt(`Let us make the reasoning visible. ${followUp}`, fallback);
+}
+
+function recordStudentIdea(response, evaluation) {
+  if (!evaluation.isProgress) return;
+  history.push({
+    step: currentStep,
+    response,
+    category: evaluation.category,
+    matches: evaluation.matches,
+    studentGenerated: true
+  });
+}
+
+function moveToNextStep() {
+  if (currentStep < demoSteps.length - 1) {
+    currentStep += 1;
+    renderStep();
+    setTimeout(() => addMessage(demoSteps[currentStep].coach, 'coach'), 350);
+  } else {
+    addMessage('Investigation complete. Notice how the journal shows only the ideas you generated or clearly agreed to during the investigation.', 'system');
+    addMessage(buildFinalSummary(), 'system');
+  }
 }
 
 function startDemo() {
   currentStep = 0;
   history = [];
+  stepAttempts = {};
+  lastPromptByStep = {};
+  redirectedByStep = {};
   chatWindow.innerHTML = '';
   renderStep();
   addMessage('Darwin Demo v3.0: a guided scientific investigation with a scripted coach prototype.', 'system');
@@ -379,28 +530,31 @@ function startDemo() {
 function advanceDemo(response) {
   const step = demoSteps[currentStep];
   const evaluation = evaluateResponse(response, step);
+  const attempts = (stepAttempts[currentStep] || 0) + 1;
+  stepAttempts[currentStep] = attempts;
 
   addMessage(response, 'student');
+  addMessage(getCoachFeedback(step, evaluation, attempts), 'coach');
 
-  const coachFeedback = getCoachFeedback(step, evaluation);
-  addMessage(coachFeedback, 'coach');
-
-  if (evaluation.isOffTopic) return;
-
-  history.push({ step: currentStep, response, matches: evaluation.matches });
-
-  if (!evaluation.isStrong) {
-    addMessage(`Scaffold: ${step.hint}`, 'coach');
+  if (evaluation.isOffTopic) {
+    if (redirectedByStep[currentStep]) {
+      moveToNextStep();
+    } else {
+      redirectedByStep[currentStep] = true;
+    }
     return;
   }
 
-  if (currentStep < demoSteps.length - 1) {
-    currentStep += 1;
-    renderStep();
-    setTimeout(() => addMessage(demoSteps[currentStep].coach, 'coach'), 350);
-  } else {
-    addMessage('Investigation complete. Notice how the journal shows your observations, inferences, hypotheses, evidence connections, and revisions.', 'system');
-    addMessage(buildFinalSummary(), 'system');
+  recordStudentIdea(response, evaluation);
+
+  if (evaluation.isStrong) {
+    moveToNextStep();
+    return;
+  }
+
+  if (attempts >= 2) {
+    addMessage(`Let us carry that idea forward with this scaffold: ${step.hint}`, 'coach');
+    moveToNextStep();
   }
 }
 
