@@ -129,7 +129,7 @@ const demoSteps = [
     move: 'Infer',
     journal: 'My Inferences',
     goal: 'Infer why cold water is a special challenge for reptiles.',
-    coach: 'Let us examine one risk. Reptiles depend greatly on outside warmth. If an iguana spends time in cold ocean water, what problem might follow?',
+    coach: 'Take care near the water. Though these islands lie near the equator, the currents around them can be surprisingly chilly. If an iguana enters cold ocean water, what problem might that create for a reptile that depends on outside warmth?',
     hint: 'Think about body temperature, movement, energy, and how cold water could slow a reptile.',
     starters: ['Cold water could...', 'Because reptiles rely on...', 'This might make it harder to...'],
     lookFor: ['cold', 'body temperature', 'temperature', 'warm', 'heat', 'slow', 'sluggish', 'energy', 'move', 'reptile', 'cold-blooded'],
@@ -522,7 +522,7 @@ function startDemo() {
   redirectedByStep = {};
   chatWindow.innerHTML = '';
   renderStep();
-  addMessage('Version 3.1 Scientific Inquiry Experience: a guided scientific investigation with a scripted coach prototype.', 'system');
+  addMessage('Version 3.11 Scientific Inquiry Experience: a guided scientific investigation with a scripted coach prototype.', 'system');
   addMessage('Use the thinking move, sentence starters, and Hint button if you want more scaffolding.', 'system');
   addMessage(demoSteps[currentStep].coach, 'coach');
 }
