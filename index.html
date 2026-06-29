@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curiosity Coach | AI for Visible Thinking</title>
+  <title>Teaching the Future | Field Notes from the AI Classroom</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,18 +12,17 @@
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="Curiosity Coach home">
-        <span class="logo-mark">CC</span>
-        <span>Curiosity Coach</span>
+      <a class="logo" href="#home" aria-label="Teaching the Future home">
+        <span class="logo-mark">TF</span>
+        <span>Teaching the Future</span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">☰</button>
       <div class="nav-links" id="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#approach">Approach</a>
-        <a href="#demo">Inquiry Experience</a>
-        <a href="#teachers">Teachers</a>
-        <a href="#admins">Administrators</a>
-        <a href="#contact">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#field-notes">Field Notes</a>
+        <a href="#projects">Projects</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About</a>
       </div>
     </nav>
   </header>
@@ -32,40 +31,66 @@
     <section id="home" class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Teacher-designed AI learning guide</p>
-          <h1>AI should not replace student thinking. It should make thinking visible.</h1>
-          <p class="lead">Curiosity Coach helps students observe, question, infer, revise, and explain. Instead of giving answers away, it guides students through the thinking that leads to stronger learning.</p>
+          <p class="eyebrow">Field notes from the AI classroom</p>
+          <h1>Teaching the Future</h1>
+          <p class="lead">Field notes from a biology teacher exploring AI, curiosity, and the future of learning.</p>
+          <p class="hero-intro">I am a practicing educator documenting how artificial intelligence is changing teaching, learning, critical thinking, and student curiosity. This site is a public notebook for classroom observations, district conversations, prototypes, and questions still in progress.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#demo">Try the Inquiry Experience</a>
-            <a class="button secondary" href="#approach">See the approach</a>
+            <a class="button primary" href="#field-notes">Read the Field Notes</a>
+            <a class="button secondary" href="#projects">Explore the Projects</a>
           </div>
         </div>
-        <div class="hero-card" aria-label="Sample Curiosity Coach interaction">
-          <div class="chat-mini coach">What do you notice first?</div>
-          <div class="chat-mini student">The shoreline looks rocky and dry.</div>
-          <div class="chat-mini coach">Good observation. What seems limited or missing?</div>
+        <div class="hero-card field-card" aria-label="Field notebook preview">
+          <p class="eyebrow">The question I’m exploring</p>
+          <h2>How can artificial intelligence support student thinking without replacing it?</h2>
           <div class="thinking-tags">
-            <span>Observe</span><span>Infer</span><span>Explain</span>
+            <span>Curiosity</span><span>Productive struggle</span><span>Visible thinking</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="problem" class="section panel-section">
+    <section class="section feature-section">
+      <div class="container">
+        <div class="feature-grid">
+          <a class="feature-card" href="#field-notes"><span>01</span><h3>Field Notes</h3><p>Reflections from classroom practice, school conversations, and the changing landscape of AI in education.</p></a>
+          <a class="feature-card" href="#projects"><span>02</span><h3>Projects</h3><p>Teacher-designed experiments, inquiry prototypes, and ideas for learning experiences that keep thinking visible.</p></a>
+          <a class="feature-card" href="#resources"><span>03</span><h3>Resources</h3><p>Useful links, articles, presentations, and classroom tools gathered as this work develops.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="field-notes" class="section panel-section page-section">
+      <div class="container">
+        <p class="eyebrow">Learning in public</p>
+        <h2>Field Notes</h2>
+        <p class="section-intro">Observations from the classroom, district conversations, and the evolving landscape of AI in education.</p>
+        <div class="post-grid">
+          <article class="post-card"><p class="post-meta">Reflection</p><h3>AI Should Make Thinking Visible</h3><p>What changes when AI is designed to reveal student reasoning instead of helping students skip the work?</p><a href="#field-notes">Read More</a></article>
+          <article class="post-card"><p class="post-meta">District notes</p><h3>Notes from a District IT Planning Meeting</h3><p>Early observations about infrastructure, access, guardrails, and the practical questions schools must answer.</p><a href="#field-notes">Read More</a></article>
+          <article class="post-card"><p class="post-meta">Classroom culture</p><h3>Curiosity, Effort, and the Future of Learning</h3><p>A placeholder for thinking through productive struggle, motivation, and how curiosity can survive easy answers.</p><a href="#field-notes">Read More</a></article>
+          <article class="post-card"><p class="post-meta">AI literacy</p><h3>Using AI as a Tutor, Not an Oracle</h3><p>Notes on helping students question AI output, ask better prompts, and keep ownership of their reasoning.</p><a href="#field-notes">Read More</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section page-section">
+      <div class="container">
+        <p class="eyebrow">Practical experiments</p>
+        <h2>Projects</h2>
+        <p class="section-intro">This section contains classroom-facing experiments, prototypes, and instructional ideas developed from real teaching questions.</p>
+        <div class="project-grid">
+          <article class="project-card featured-project"><h3>Curiosity Coach</h3><p>A teacher-designed AI learning guide that asks questions, prompts observations, challenges reasoning, and makes student thinking visible.</p><a class="button primary" href="#curiosity-coach">Explore the Demo</a></article>
+          <article class="project-card"><h3>Darwin Demo</h3><p>A guided inquiry experience using Galápagos marine iguanas to model observation, inference, adaptation, and natural selection.</p></article>
+          <article class="project-card"><h3>Future Classroom Ideas</h3><p>Emerging concepts for using AI to support critical thinking, media literacy, scientific reasoning, and student agency.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="curiosity-coach" class="section panel-section">
       <div class="container two-column">
-        <div>
-          <p class="eyebrow">The problem</p>
-          <h2>AI can become an answer machine.</h2>
-        </div>
-        <div class="content-card">
-          <p>When students use AI only to get answers, they can skip the most important part of learning: the struggle to observe, reason, test ideas, and explain evidence.</p>
-          <p>Curiosity Coach starts from a different question: how can AI slow students down enough to make their thinking visible?</p>
-          <ul class="check-list">
-            <li>Guided inquiry before answers</li>
-            <li>Reasoning and evidence before conclusions</li>
-            <li>Student thinking captured through interaction history</li>
-          </ul>
-        </div>
+        <div><p class="eyebrow">Curiosity Coach</p><h2>AI should not replace student thinking. It should make thinking visible.</h2></div>
+        <div class="content-card"><p>Curiosity Coach helps students observe, question, infer, revise, and explain. Instead of giving answers away, it guides students through the thinking that leads to stronger learning.</p><p>When students use AI only to get answers, they can skip the struggle to observe, reason, test ideas, and explain evidence. Curiosity Coach starts from a different question: how can AI slow students down enough to make their thinking visible?</p><ul class="check-list"><li>Guided inquiry before answers</li><li>Reasoning and evidence before conclusions</li><li>Student thinking captured through interaction history</li></ul></div>
       </div>
     </section>
 
@@ -81,161 +106,50 @@
           <article class="step"><span>05</span><h3>Revise</h3><p>They adjust ideas when new evidence appears.</p></article>
           <article class="step"><span>06</span><h3>Explain</h3><p>They build a final explanation using evidence and reasoning.</p></article>
         </div>
-        <div class="evidence-stream">
-          <h3>The interaction history becomes evidence of learning.</h3>
-          <p>Each student response shows what they noticed, what they misunderstood, how their reasoning changed, and whether they can connect evidence to a conclusion.</p>
-        </div>
+        <div class="evidence-stream"><h3>The interaction history becomes evidence of learning.</h3><p>Each student response shows what they noticed, what they misunderstood, how their reasoning changed, and whether they can connect evidence to a conclusion.</p></div>
       </div>
     </section>
 
-    <section id="demo" class="section demo-section">
+    <section id="demo" class="section demo-section panel-section">
       <div class="container">
-        <p class="eyebrow">Interactive prototype</p>
+        <p class="eyebrow">Darwin Demo</p>
         <h2>Scientific Inquiry Experience</h2>
         <p class="demo-subtitle">Featuring Charles Darwin as your field mentor</p>
         <p class="section-intro">Darwin is the first example mentor in this guided investigation, but the purpose is scientific inquiry: students observe evidence, ask questions, make inferences, test hypotheses, revise thinking, and explain with reasoning.</p>
-
-        <div class="prototype-transparency content-card">
-          <h3>Prototype transparency</h3>
-          <p>This interactive prototype demonstrates the instructional framework behind Curiosity Coach. It does not use a Large Language Model. Instead, it uses a scripted decision tree to show how students can be guided through observation, questioning, inference, hypothesis, revision, and explanation.</p>
-          <p>Because this prototype follows predefined pathways rather than understanding natural language, visitors may occasionally need to rephrase or clarify an answer. Curiosity Coach uses an LLM to understand the meaning behind student responses, adapt its coaching in real time, and personalize guidance while remaining under teacher control.</p>
-          <p class="prototype-purpose">The purpose of this prototype is to demonstrate the instructional design — not the AI itself.</p>
-        </div>
-
-        <div class="comparison-box" aria-label="Prototype and Curiosity Coach comparison">
-          <article>
-            <h3>This Prototype</h3>
-            <ul class="check-list">
-              <li>Scripted decision tree</li>
-              <li>Demonstrates the instructional framework</li>
-              <li>Predefined coaching paths</li>
-              <li>No AI or student data</li>
-              <li>Illustrates the concept</li>
-            </ul>
-          </article>
-          <article>
-            <h3>Curiosity Coach</h3>
-            <ul class="check-list">
-              <li>Natural language conversation</li>
-              <li>Understands student meaning and intent</li>
-              <li>Dynamically adapts to each student’s reasoning</li>
-              <li>Teacher-controlled AI guidance</li>
-              <li>Full guided inquiry experience</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="demo-layout">
-          <aside class="image-panel">
-            <div class="placeholder-image" id="demo-image" aria-describedby="image-label"></div>
-            <p class="image-caption" id="image-label">Image 1: Galápagos shoreline</p>
-            <div class="demo-progress" aria-label="Demo progress">
-              <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            </div>
-          </aside>
-
-          <section class="chat-panel" aria-label="Darwin demo chat simulation">
-            <div class="chat-header">
-              <strong>Curiosity Coach Demo</strong>
-              <span>Guided inquiry v3.1</span>
-            </div>
-            <div class="demo-coaching-card" id="demo-coaching-card" aria-live="polite">
-              <div>
-                <span class="coaching-label">Current thinking move</span>
-                <strong id="thinking-move">Observe</strong>
-              </div>
-              <p id="thinking-goal">Start with specific details you can see before making an explanation.</p>
-              <div class="sentence-starters" id="sentence-starters" aria-label="Sentence starters"></div>
-            </div>
-            <div class="chat-window" id="chat-window"></div>
-            <form class="chat-form" id="chat-form">
-              <label class="sr-only" for="student-input">Type your response</label>
-              <input id="student-input" type="text" placeholder="Type your student response..." autocomplete="off" />
-              <button type="submit">Send</button>
-            </form>
-            <div class="demo-controls">
-              <button id="hint-demo" type="button">Hint</button>
-              <button id="back-step" type="button">Back</button>
-              <button id="reset-demo" type="button">Reset</button>
-            </div>
-          </section>
-        </div>
+        <div class="prototype-transparency content-card"><h3>Prototype transparency</h3><p>This interactive prototype demonstrates the instructional framework behind Curiosity Coach. It does not use a Large Language Model. Instead, it uses a scripted decision tree to show how students can be guided through observation, questioning, inference, hypothesis, revision, and explanation.</p><p>Because this prototype follows predefined pathways rather than understanding natural language, visitors may occasionally need to rephrase or clarify an answer. Curiosity Coach uses an LLM to understand the meaning behind student responses, adapt its coaching in real time, and personalize guidance while remaining under teacher control.</p><p class="prototype-purpose">The purpose of this prototype is to demonstrate the instructional design — not the AI itself.</p></div>
+        <div class="comparison-box" aria-label="Prototype and Curiosity Coach comparison"><article><h3>This Prototype</h3><ul class="check-list"><li>Scripted decision tree</li><li>Demonstrates the instructional framework</li><li>Predefined coaching paths</li><li>No AI or student data</li><li>Illustrates the concept</li></ul></article><article><h3>Curiosity Coach</h3><ul class="check-list"><li>Natural language conversation</li><li>Understands student meaning and intent</li><li>Dynamically adapts to each student’s reasoning</li><li>Teacher-controlled AI guidance</li><li>Full guided inquiry experience</li></ul></article></div>
+        <div class="demo-layout"><aside class="image-panel"><div class="placeholder-image" id="demo-image" aria-describedby="image-label"></div><p class="image-caption" id="image-label">Image 1: Galápagos shoreline</p><div class="demo-progress" aria-label="Demo progress"><span class="dot active"></span></div></aside><section class="chat-panel" aria-label="Darwin demo chat simulation"><div class="chat-header"><strong>Curiosity Coach Demo</strong><span>Guided inquiry v3.1</span></div><div class="demo-coaching-card" id="demo-coaching-card" aria-live="polite"><div><span class="coaching-label">Current thinking move</span><strong id="thinking-move">Observe</strong></div><p id="thinking-goal">Start with specific details you can see before making an explanation.</p><div class="sentence-starters" id="sentence-starters" aria-label="Sentence starters"></div></div><div class="chat-window" id="chat-window"></div><form class="chat-form" id="chat-form"><label class="sr-only" for="student-input">Type your response</label><input id="student-input" type="text" placeholder="Type your student response..." autocomplete="off" /><button type="submit">Send</button></form><div class="demo-controls"><button id="hint-demo" type="button">Hint</button><button id="back-step" type="button">Back</button><button id="reset-demo" type="button">Reset</button></div></section></div>
       </div>
     </section>
 
-    <section id="teachers" class="section">
-      <div class="container two-column">
-        <div>
-          <p class="eyebrow">For teachers</p>
-          <h2>Teacher-controlled learning experiences.</h2>
-        </div>
-        <div class="content-card">
-          <p>Teachers determine the content, focus, standards, images, and instructional goals. Curiosity Coach does not replace the teacher or curriculum; it guides students through teacher-selected learning experiences.</p>
-          <p>Teachers can use CC after direct instruction, videos, slides, readings, labs, or demonstrations. The teacher provides the learning focus, and CC guides students through structured thinking that keeps evidence and reasoning visible.</p>
-          <ul class="check-list">
-            <li>Teacher-selected standards and learning targets</li>
-            <li>Teacher-approved sources, images, and prompts</li>
-            <li>Guidance that supports—not replaces—instruction</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="differentiation" class="section panel-section">
+    <section class="section">
       <div class="container">
-        <p class="eyebrow">Differentiated instruction</p>
-        <h2>The same lesson can meet different learners where they are.</h2>
-        <div class="support-grid">
-          <article class="support-card"><h3>AP students</h3><p>Receive deeper reasoning prompts that ask them to evaluate mechanisms, qualify claims, and connect evidence across steps.</p></article>
-          <article class="support-card"><h3>Standard students</h3><p>Receive guided evidence-based questions that help them explain why an answer makes sense instead of stopping at a conclusion.</p></article>
-          <article class="support-card"><h3>ESE and ELL students</h3><p>Receive more scaffolding, sentence starters, vocabulary support, and step-by-step guidance while working toward the same instructional goal.</p></article>
-        </div>
+        <p class="eyebrow">Instructional design</p>
+        <h2>Teacher-controlled learning experiences.</h2>
+        <div class="support-grid"><article class="support-card"><h3>For teachers</h3><p>Teachers determine the content, focus, standards, images, and instructional goals. Curiosity Coach supports—not replaces—instruction.</p></article><article class="support-card"><h3>Differentiation</h3><p>AP, standard, ESE, and ELL students can receive different levels of scaffolding while working toward the same instructional goal.</p></article><article class="support-card"><h3>Across subjects</h3><p>The same visible-thinking framework can support science, algebra, history, ELA, media literacy, and source evaluation.</p></article></div>
       </div>
     </section>
 
-    <section id="subjects" class="section">
+    <section id="resources" class="section panel-section page-section">
       <div class="container">
-        <p class="eyebrow">Across subjects</p>
-        <h2>Curiosity Coach can guide inquiry beyond one topic.</h2>
-        <div class="subject-grid">
-          <article class="subject-card"><h3>Science</h3><p>Students investigate marine iguanas by observing evidence, forming hypotheses, and explaining adaptation.</p></article>
-          <article class="subject-card"><h3>Algebra</h3><p>Students explain why each step in solving an equation works instead of only getting the answer.</p></article>
-          <article class="subject-card"><h3>History</h3><p>Students examine primary sources, identify perspective or bias, and build evidence-based historical claims.</p></article>
-          <article class="subject-card"><h3>ELA</h3><p>Students analyze a passage, support interpretation with textual evidence, and revise claims.</p></article>
-        </div>
+        <p class="eyebrow">Collected links</p><h2>Resources</h2><p class="section-intro">Articles, presentations, links, and documents connected to AI, education, inquiry, and instructional design.</p>
+        <div class="resource-grid"><article class="resource-card"><h3>Articles &amp; Reflections</h3><a href="#resources">Placeholder article link</a><a href="#resources">Reflection archive</a></article><article class="resource-card"><h3>Presentations</h3><a href="#resources">District planning notes</a><a href="#resources">AI classroom discussion deck</a></article><article class="resource-card"><h3>AI in Education Links</h3><a href="#resources">AI literacy resource</a><a href="#resources">School policy reference</a></article><article class="resource-card"><h3>Classroom Tools</h3><a href="#resources">Inquiry prompt bank</a><a href="#resources">Visible thinking checklist</a></article></div>
+        <p class="resource-note">More resources will be added as this work develops.</p>
       </div>
     </section>
 
-    <section id="admins" class="section panel-section">
+    <section id="about" class="section page-section">
       <div class="container two-column">
-        <div>
-          <p class="eyebrow">For administrators</p>
-          <h2>Controlled, teacher-directed AI use.</h2>
-        </div>
-        <div class="content-card">
-          <p>Curiosity Coach is designed as a teacher-directed prototype, not an open-ended student chatbot. It focuses on AI literacy, critical thinking, source evaluation, reasoning, and measurable evidence of student thinking.</p>
-          <p>The goal is not to replace teachers or student effort. The goal is to make the learning process easier to see, guide, and discuss.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-      <div class="container contact-card">
-        <p class="eyebrow">Contact / About</p>
-        <h2>Curiosity Coach</h2>
-        <p>A prototype education project exploring teacher-designed AI for inquiry, reasoning, and visible student thinking.</p>
-        <p class="placeholder-contact">Contact: <a href="mailto:curiositycoach.ai@gmail.com">curiositycoach.ai@gmail.com</a></p>
+        <div><p class="eyebrow">About</p><h2>About Michael Williams</h2></div>
+        <div class="content-card"><p>I am a high school Biology and Environmental Science teacher exploring what artificial intelligence means for real classrooms, real students, and real instructional decisions. My path into education has been shaped by science, service, travel, and a lifelong habit of asking questions.</p><p>Before teaching, I served as a U.S. Navy meteorologist and oceanographer. I later spent years traveling, observing the natural world, and continuing to learn science from lived experience. Today, I bring that background into my classroom and into my work as a school representative involved in district IT planning conversations.</p><p>I am especially interested in how AI can reinforce good instructional practice rather than replace student thinking. The goal is not faster shortcuts. The goal is better questions, stronger reasoning, and more visible learning.</p><h3>Why Teaching the Future?</h3><p>This site is not about predicting the future from a distance. It is about documenting the transition from inside the classroom: what I notice, what I try, what works, what worries me, and what still needs careful thought.</p><h3>Core Belief</h3><p class="prototype-purpose">AI should not replace student thinking. It should help make thinking visible.</p></div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-content">
-      <div class="footer-brand">
-        <span>© 2026 Curiosity Coach Prototype</span>
-        <strong>Version 3.11</strong>
-      </div>
-      <span>No login. No backend. No real student data collection.</span>
+      <div class="footer-brand"><strong>Teaching the Future</strong><span>Field notes from the AI classroom.</span></div>
+      <div class="footer-links"><a href="mailto:curiositycoach.ai@gmail.com">Contact</a><a href="#resources">Resources</a><a href="#field-notes">Field Notes</a></div>
     </div>
   </footer>
 
