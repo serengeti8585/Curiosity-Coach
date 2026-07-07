@@ -629,3 +629,101 @@ h3 { font-size: 1.15rem; }
     aspect-ratio: 4 / 3;
   }
 }
+
+.philosophy-section {
+  padding-top: 54px;
+  background:
+    linear-gradient(180deg, rgba(246, 251, 251, 0), rgba(238, 248, 246, .72));
+}
+
+.philosophy-image-link {
+  display: block;
+  border-radius: 28px;
+  cursor: zoom-in;
+}
+
+.philosophy-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--soft);
+  box-shadow: var(--shadow);
+}
+
+.philosophy-card {
+  margin-top: 26px;
+}
+
+.philosophy-card p:last-child {
+  margin-bottom: 0;
+}
+
+.philosophy-statement,
+.philosophy-link-sentence {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.philosophy-statement {
+  margin: 18px 0;
+  font-size: 1.22rem;
+}
+
+.philosophy-link-sentence {
+  margin-top: 0;
+}
+
+.image-lightbox {
+  width: min(1120px, calc(100% - 32px));
+  max-width: 1120px;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  background: transparent;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(18, 52, 59, .72);
+  backdrop-filter: blur(4px);
+}
+
+.image-lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 86vh;
+  object-fit: contain;
+  border-radius: 28px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .philosophy-image-link,
+  .philosophy-hero-image,
+  .image-lightbox,
+  .image-lightbox img {
+    border-radius: 18px;
+  }
+}

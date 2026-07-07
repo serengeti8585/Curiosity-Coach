@@ -584,3 +584,29 @@ backButton.addEventListener('click', () => {
 });
 
 startDemo();
+
+const lightboxTrigger = document.querySelector('[data-lightbox-image]');
+const imageLightbox = document.querySelector('.image-lightbox');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+if (lightboxTrigger && imageLightbox && lightboxClose) {
+  lightboxTrigger.addEventListener('click', event => {
+    event.preventDefault();
+
+    if (typeof imageLightbox.showModal === 'function') {
+      imageLightbox.showModal();
+    } else {
+      window.open(lightboxTrigger.href, '_blank', 'noopener');
+    }
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    imageLightbox.close();
+  });
+
+  imageLightbox.addEventListener('click', event => {
+    if (event.target === imageLightbox) {
+      imageLightbox.close();
+    }
+  });
+}
